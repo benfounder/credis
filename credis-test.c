@@ -109,6 +109,9 @@ int main(int argc, char **argv) {
   rc = credis_ping(redis);
   printf("ping returned: %d\n", rc);
 
+  rc = credis_auth(redis, "qwerty");
+  printf("auth returned: %d\n", rc);
+
   rc = credis_lastsave(redis);
   printf("lastsave returned: %d\n", rc);
 
@@ -138,7 +141,6 @@ int main(int argc, char **argv) {
   printf("> pubsub_patterns: %u\n", info.pubsub_patterns);
   printf("> vm_enabled: %d\n", info.vm_enabled);
   printf("> role: %d\n", info.role);
-
 
   printf("\n\n************* get/set ************************************ \n");
 
