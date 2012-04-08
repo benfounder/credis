@@ -1064,7 +1064,7 @@ int credis_keys(REDIS rhnd, const char *pattern, char ***keyv)
   int rc;
 
   /* with Redis 2.0.0 keys-command returns a multibulk instead of bulk */
-  if (rhnd->version.major >= 2) {
+  if ((rhnd->version.major >= 2) || (rhnd->version.minor >= 3)) {
     rc = cr_sendfandreceive(rhnd, CR_MULTIBULK, "KEYS %s\r\n", pattern);
   }
   else {
