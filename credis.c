@@ -1220,8 +1220,8 @@ int credis_lindex(REDIS rhnd, const char *key, int index, char **val)
 
 int credis_lset(REDIS rhnd, const char *key, int index, const char *val)
 {
-  return cr_sendfandreceive(rhnd, CR_INLINE, "LSET %s %d %zu\r\n%s\r\n", 
-                            key, index, strlen(val), val);
+  return cr_sendfandreceive(rhnd, CR_INLINE, "LSET %s %d %s\r\n", 
+                            key, index, val);
 }
 
 int credis_lrem(REDIS rhnd, const char *key, int count, const char *val)
